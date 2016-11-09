@@ -146,7 +146,7 @@ function dc_build_view() {
 					}
 					?>
 						<tr id="brand">
-							<td><?php echo $brand; ?></td>
+							<td><?php echo $brand->slug; ?></td>
 							<td><?php echo $totalclients; ?></td>
 						</tr>
 					<?php
