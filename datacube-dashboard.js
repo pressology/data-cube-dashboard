@@ -8,15 +8,23 @@ jQuery(document).ready(function($) {
 	//Individual "Send E-mail" Buttons on Dashboard Overview
 	//These are written to allow the on click binding to apply to dynamically created buttons as well		
     $("#all-the-content").on('click', '.send-alert',function() {
-								
+
+		var button = $(this);
+
 	    $.post(
 			ajaxurl,
 				{
-					'action':'dc_send_alert',
-					'postid':$(this).attr('name'),
+					'action':'dc_email_handler',
+					'command':$(this).attr('name'),
+					'data':$(this).attr('value')
 				}
-			);
-			$(this).css({'background':'green'});
+			).done( function( data ) {
+
+			//alert( data );
+			$(button).parent().html('Alert sent.');
+
+			});
+
 	});
 	
 	//NAV and Page Building. NOT dynamically bound.
@@ -50,6 +58,20 @@ jQuery(document).ready(function($) {
 			$("#all-the-content").html(data);
 		})
 		
+	});
+
+	$("#refresh_btn").click( function() {
+
+		$.ajax({
+			type: "POST",
+			url: ajaxurl,
+			data: {
+				action: "dc_refresh_alerts",
+			}
+		}).done( function( data ) {
+			alert( "All brands alert status reset." );
+		})
+
 	});
 			
 });

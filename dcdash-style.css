@@ -47,3 +47,15 @@ a.dc_dash_nav_btn:hover {
 #brand-list tr:hover {
     background-color: #D5D5D5;
 }
+
+.dc_dash_err_row {
+    background-color: #fcaeae !important;
+}
+
+#dc_upload {
+    margin-left: 70%;
+}
+
+#dc_header {
+    width: 70%;
+}
